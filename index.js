@@ -42,13 +42,18 @@ app.post('/portal/verify', async (req, res) => {
 
         console.log('generate_invite_link', generate_invite_link);
 
-        const mesage = `Verified, you can join the group using this temporary link:
+        const mesage = `<b>Verified, you can join the group using this temporary link:</b>
 
 ${generate_invite_link?.invite_link}    
 
 This link is a one time use and will expire`;
 
-        await bot.telegram.sendMessage(chat_id, mesage);
+        const url = 'https://img.freepik.com/free-photo/standard-quality-control-collage_23-2149631018.jpg?size=626&ext=jpg&ga=GA1.1.1458125422.1697875319&semt=ais';
+
+        await bot.telegram.sendPhoto(chat_id, url,{
+            caption : mesage,
+            parse_mode : "HTML",
+        });
 
         console.log(chat_id, '===========>>>.chat id');
 
