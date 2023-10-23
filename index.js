@@ -29,9 +29,9 @@ app.post('/portal/verify', async (req, res) => {
 
         console.log('group id -------->>>>',group_id)
 
-        const expireDate = Math.floor(Date.now() / 1000) + 60;
+        // const expireDate = Math.floor(Date.now() / 1000) + 60;
 
-        const generate_invite_link = await bot.telegram.createChatInviteLink(group_id, expireDate, 1); // 1 is the limit of users that can join through the invite link
+        const generate_invite_link = await bot.telegram.createChatInviteLink(group_id, null, null, 1); // 1 is the limit of users that can join through the invite link
 
         // -------------------------Valid Link for one min -------------------------\\
         setTimeout(async () => {
